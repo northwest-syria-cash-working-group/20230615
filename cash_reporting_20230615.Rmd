@@ -160,6 +160,7 @@ eq <- eq %>%
             by = "admin3pcode")
 
 cbr <- read_csv("./data/cbr_com.csv") %>% 
+  filter(total_value_per_hh != 75) %>%
   filter(str_detect(cluster, "Multipurpose")) %>% 
   mutate(month = month(end_date)) %>% 
   replace_na(list(beneficiaries = 0)) %>% 
@@ -183,6 +184,7 @@ cbr <- read_csv("./data/cbr_com.csv") %>%
                                       "No", 
                                       previously_assisted)) %>% 
   filter(admin1pcode != "SY09")
+ 
   
 
 hno <- read_excel("./data/2023HNO_PiN_Severity_detailedAoI_FORSHARE 15032023.xlsx", skip = 1, 
